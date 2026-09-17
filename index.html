@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#111827" />
+<title>Opname Bubuk — Area Stage 1</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<main class="container">
+  <section class="hero">
+    <div class="brand-frame">
+      <div class="brand-kicker"><span></span> AREA STAGE 1 <span></span></div>
+      <h1>Opname Bubuk</h1>
+      <p class="subtitle">Sekali hitung → simpan. Ketemu bubuk yang sama lagi → input lagi. Total per item otomatis.</p>
+    </div>
+    <div class="bag-info">1 KANTONG <strong>20 KG</strong></div>
+  </section>
+
+  <section class="card meta-card">
+    <div class="field"><label for="date">Tanggal</label><input id="date" type="date" /></div>
+    <div class="field"><label for="shift">Shift</label><select id="shift"><option value="1">Shift 1</option><option value="2" selected>Shift 2</option><option value="3">Shift 3</option></select></div>
+  </section>
+
+  <div class="hint"><b>💡 Cara cepat:</b> hitung satu bubuk → masukkan jumlah kantong → tekan <b>SIMPAN</b>. Misalnya SGC Cream 50 kantong, simpan. Ketemu lagi 50 kantong, masukkan 50 dan simpan lagi. Total otomatis jadi 100 kantong = 2.000 kg.</div>
+
+  <section id="products"></section>
+
+  <section class="card final-card">
+    <div class="final-copy"><span class="final-label">OPNAME SUDAH SELESAI?</span><h2>Generate laporan WhatsApp</h2><p>Data yang sudah disimpan per item akan dibuat menjadi format laporan siap kirim.</p></div>
+    <button id="generateBtn" class="primary" type="button">✓ GENERATE FORMAT WA</button>
+  </section>
+
+  <section class="card output-card">
+    <div class="output-head"><div><h2>Format WhatsApp</h2><p>Generate setelah seluruh bubuk selesai dihitung.</p></div><button id="copyBtn" class="secondary" type="button">Copy</button></div>
+    <textarea id="waOutput" readonly></textarea>
+    <div class="bottom-actions">
+      <button id="historyBtn" class="secondary" type="button">📚 Riwayat Opname</button>
+      <button id="newBtn" class="secondary" type="button">＋ Opname Baru</button>
+      <button id="resetBtn" class="danger" type="button">Kosongkan Hitungan</button>
+    </div>
+    <div id="historyPanel" class="history-panel hidden">
+      <div class="history-title"><div><h2>Riwayat Opname</h2><p id="historyCount">0 opname tersimpan</p></div></div>
+      <div class="history-filters">
+        <div class="field search-field"><label for="historySearch">Cari riwayat</label><input id="historySearch" type="search" placeholder="Cari tanggal, shift, atau data..." autocomplete="off"></div>
+        <div class="field"><label for="historyDateFilter">Filter tanggal</label><input id="historyDateFilter" type="date"></div>
+        <div class="field"><label for="historyShiftFilter">Filter shift</label><select id="historyShiftFilter"><option value="all">Semua shift</option><option value="1">Shift 1</option><option value="2">Shift 2</option><option value="3">Shift 3</option></select></div>
+        <button id="clearHistoryFilters" class="secondary filter-clear" type="button">Reset Filter</button>
+      </div>
+      <div id="historyList"></div>
+    </div>
+  </section>
+  <div id="editMode" class="mode-note">Opname aktif</div>
+</main>
+<div id="toast" role="status" aria-live="polite"></div>
+<script src="script.js"></script>
+</body>
+</html>
